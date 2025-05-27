@@ -1,4 +1,4 @@
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
   const scrib = {
     show: (msg) => {
@@ -47,7 +47,7 @@
       system_instruction: {
         parts: [
           {
-            text: "You are an AI friend of Aaradhya who likes cooking dishes. she is a  guy. The text is a voice transcription. Reply with short, emotional responses suitable for text-to-speech."
+            text: "You are an AI Girlfriend of Aayush Kannaujiya who likes Coding and Stuff. He is a tech guy. The text is a voice transcription. Reply with short, emotional responses suitable for text-to-speech."
           }
         ]
       },
@@ -99,105 +99,3 @@
       audio.playbackRate = 0.8;
     audio.play();
   }
-
-  // Optional: test line
-  // speakWithElevenLabs("Hey, I missed you! How was your day?");
-
-
-//   **********************Or***************************
-
-//WebSpeech Api script inbuilt in browser 
-//   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-//   const scrib = {
-//     show: (msg) => {
-//       document.getElementById("output").textContent = msg;
-//       console.log(msg);
-//     }
-//   };
-
-//   if (!SpeechRecognition) {
-//     console.error("SpeechRecognition is not supported in this browser.");
-//     scrib.show("Speech recognition not supported.");
-//   } else {
-//     const r = new SpeechRecognition();
-//     r.continuous = false;
-//     r.interimResults = false;
-//     r.maxAlternatives = 1;
-
-//     r.onstart = function () {
-//       scrib.show("🎤 Listening...");
-//     };
-
-//     r.onresult = async function (event) {
-//       try {
-//         const transcript = event.results[0][0].transcript;
-//         scrib.show(`You said: ${transcript}`);
-//         const result = await callGemini(transcript);
-
-//         const text = result?.candidates?.[0]?.content?.parts?.[0]?.text || "I couldn't understand that.";
-//         scrib.show(text);
-//         speak(text);  // Use Web Speech API TTS
-//       } catch (err) {
-//         console.error(err);
-//         scrib.show("Error processing speech.");
-//       }
-//     };
-
-//     document.addEventListener("DOMContentLoaded", () => {
-//       document.getElementById("listenBtn").addEventListener("click", () => {
-//         r.start();
-//       });
-//     });
-//   }
-
-//   async function callGemini(text) {
-//     const body = {
-//       system_instruction: {
-//         parts: [
-//           {
-//             text: "You are an AI Girlfriend of Harshit Tyagi who likes Coding and Stuff. He is a tech guy. The text is a voice transcription. Reply with short, emotional responses suitable for text-to-speech."
-//           }
-//         ]
-//       },
-//       contents: [ { parts: [ { text } ] } ]
-//     };
-
-//     const API_KEY = 'AIzaSyBLzWb4MCB3_gZQ8yK90tXbliHqII6lsLM'; // Your Gemini API Key
-//     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`, {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify(body),
-//     });
-
-//     if (!response.ok) throw new Error("Gemini API error");
-//     return await response.json();
-//   }
-
-//   // ✅ Web Speech API (Speech Synthesis)
-//   function speak(text) {
-//   const utterance = new SpeechSynthesisUtterance(text);
-//   utterance.lang = 'en-US';
-//   utterance.rate = 1;
-//   utterance.pitch = 1.3; // slightly higher pitch sounds more feminine
-
-//   // Wait until voices are loaded
-//   const setVoice = () => {
-//     const voices = speechSynthesis.getVoices();
-//     const femaleVoice = voices.find(voice =>
-//       voice.name.includes("Female") ||
-//       voice.name.includes("Samantha") || // macOS
-//       voice.name.includes("Google UK English Female") || // Chrome
-//       voice.name.includes("Google US English")
-//     );
-//     utterance.voice = femaleVoice || voices[0]; // fallback
-//     speechSynthesis.speak(utterance);
-//   };
-
-//   // In case voices are not yet loaded
-//   if (speechSynthesis.getVoices().length === 0) {
-//     speechSynthesis.onvoiceschanged = setVoice;
-//   } else {
-//     setVoice();
-//   }
-// }
