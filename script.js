@@ -56,7 +56,7 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
       }]
     };
 
-    const API_KEY = 'AIzaSyBLzWb4MCB3_gZQ8yK90tXbliHqII6lsLM'; // Your Gemini API Key
+    const API_KEY = 'AIzaSyDJc2a9MwselUfYm3I4dTaOaPUZZV_91eM'; 
     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
