@@ -56,8 +56,8 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
       }]
     };
 
-    const API_KEY = 'AIzaSyDJc2a9MwselUfYm3I4dTaOaPUZZV_91eM'; 
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`, {
+    const API_KEY = process.env.GEMINI_API_KEY; 
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
@@ -68,7 +68,7 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
   }
 
   async function speakWithElevenLabs(text) {
-    const API_KEY = 'sk_83ff3093dfa96a95c0805f4571b86801e3743e5a7bfae757'; // replace with your actual ElevenLabs key
+    const API_KEY = process.env.ELEVEN_LABS_API_KEY; // replace with your actual ElevenLabs key
     const VOICE_ID = 'mg9npuuaf8WJphS6E0Rt'; // Rachel - recommended girlfriend voice
 
     const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}`, {
